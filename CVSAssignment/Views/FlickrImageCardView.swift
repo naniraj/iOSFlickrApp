@@ -46,13 +46,6 @@ struct FlickrImageCardView: View {
     }
 }
 
-//public extension View {
-//    func cardStyle(style: )
-//}
-class FlickrImageCardViewModel {
-    
-}
-
 //#Preview {
 //    FlickrImageCardView()
 //}

@@ -22,6 +22,11 @@ struct FlickrImageDetailView: View {
                             self.isAnimating = true
                         }
                     }
+            } else {
+                Image(systemName: "photo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundColor(.gray)
             }
             //                .accessibilityLabel(Text(flickrItem.title ?? "Image"))
             //                .accessibilityHint(Text("Double tap to view full image"))
@@ -57,21 +62,21 @@ struct FlickrImageDetailView: View {
     }
     
     private func shareImage() {
-            let items = [
-                flickrItem.title,
-                flickrItem.description,
-                "Image URL: \(flickrItem.media?.m ?? "")",
-                "Author: \(flickrItem.author ?? "")",
-                "Published Date: \(flickrItem.published?.formattedPublishedDate ?? "")"
-            ]
-            
-            let activityVC = UIActivityViewController(activityItems: items.compactMap { $0 }, applicationActivities: nil)
-            
-            // Get the current window scene
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                windowScene.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
-            }
+        let items = [
+            flickrItem.title,
+            flickrItem.description,
+            "Image URL: \(flickrItem.media?.m ?? "")",
+            "Author: \(flickrItem.author ?? "")",
+            "Published Date: \(flickrItem.published?.formattedPublishedDate ?? "")"
+        ]
+        
+        let activityVC = UIActivityViewController(activityItems: items.compactMap { $0 }, applicationActivities: nil)
+        
+        // Get the current window scene
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            windowScene.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
         }
+    }
 }
 
 extension FlickrImageDetailView {
